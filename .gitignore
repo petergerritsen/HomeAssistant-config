@@ -1,0 +1,5 @@
+*
+!*.yaml
+!automation
+!.gitignore
+secrets.yaml

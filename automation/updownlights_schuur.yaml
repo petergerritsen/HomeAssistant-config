@@ -1,0 +1,43 @@
+- alias: Lampen schuur aan bij zonsondergang
+  hide_entity: False
+  trigger:
+    platform: sun
+    event: sunset
+  condition:
+    condition: time
+    before: '22:25:00'
+  action:
+    service: light.turn_on
+    entity_id: light.tuinlampen_schuur
+
+- alias: Lampen schuur uit om 22:30
+  hide_entity: False
+  trigger:
+    platform: time
+    # When 'after' is used, you cannot also match on hour, minute, seconds.
+    # Military time format.
+    at: '22:30:00'
+  action:
+    service: light.turn_off
+    entity_id: light.tuinlampen_schuur
+
+- alias: Lampen schuur aan in de ochtend
+  hide_entity: False
+  trigger:
+    platform: time
+    at: '07:00:00'
+  condition:
+    condition: sun
+    before: sunrise
+  action:
+    service: light.turn_on
+    entity_id: light.tuinlampen_schuur
+    
+- alias: Lampen schuur uit in de ochtend
+  hide_entity: False
+  trigger:
+    platform: sun
+    event: sunrise
+  action:
+    service: light.turn_off
+    entity_id: light.tuinlampen_schuur

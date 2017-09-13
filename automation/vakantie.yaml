@@ -1,0 +1,81 @@
+- alias: Lampen tafel random aan
+  hide_entity: False
+  trigger:
+    platform: time
+    at: '21:00:00'
+  condition:
+    condition: state
+    entity_id: input_boolean.on_vacation
+    state: 'on'
+  action:
+    - delay: '00:{{ (range(1,59)|random|int) }}:00'
+    - service: light.turn_on
+      entity_id: light.sonoff_eettafel
+
+- alias: Lampen tafel random uit
+  hide_entity: False
+  trigger:
+    platform: time
+    at: '22:10:00'  
+  condition:
+    condition: state
+    entity_id: input_boolean.on_vacation
+    state: 'on'
+  action:
+    - delay: '00:{{ (range(1,30)|random|int) }}:00'
+    - service: light.turn_off
+      entity_id: light.sonoff_eettafel
+
+- alias: Lamp zithoek random aan
+  hide_entity: False
+  trigger:
+    platform: time
+    at: '21:00:00' 
+  condition:
+    condition: state
+    entity_id: input_boolean.on_vacation
+    state: 'on' 
+  action:
+    - delay: '00:{{ (range(1,59)|random|int) }}:00'
+    - service: light.turn_on
+      entity_id: light.lamp_zithoek
+
+- alias: Lamp zithoek random uit
+  hide_entity: False
+  trigger:
+    platform: time
+    at: '22:00:00'
+  condition:
+    condition: state
+    entity_id: input_boolean.on_vacation
+    state: 'on'
+  action:
+    - delay: '00:{{ (range(1,30)|random|int) }}:00'
+    - service: light.turn_off
+      entity_id: light.lamp_zithoek   
+
+- alias: Kaku3-6 random aan / uit
+  hide_entity: False
+  trigger:
+    - platform: sun
+      event: sunset
+    - platform: event
+      event_type: event_kaku_presence
+  condition:
+    condition: or
+    conditions:
+      - condition: time
+        before: '23:30:00'
+      - condition: state
+        entity_id: input_boolean.on_vacation
+        state: 'on'
+  action:
+    - service: light.turn_on
+      data_template: 
+        entity_id: >
+          switch.kaku_{{ (range(3,6) | random) }}
+    - delay: '00:{{ (range(10, 30) | random) }}:00'
+    - service: switch.turn_off
+      entity_id: group.kaku_3_6  
+    - delay: '00:{{ (range(1,10) | random) }}:00'
+    - event: event_kaku_presence
