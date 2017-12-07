@@ -4,6 +4,7 @@ default_view:
   entities:
     - group.my_lights
     - group.my_covers
+    - group.kerstlampjes
     - sensor.yr_cloudiness
     - sensor.yr_symbol
     - sensor.yr_temperature
@@ -22,6 +23,15 @@ my_lights:
     - light.tuinlampen_plantenbak
     - light.lampen_eettafel
     - light.lamp_zithoek
+    
+kerstlampjes:
+  view: no
+  name: Kerstlampjes
+  icon: mdi:pine-tree
+  control: hidden
+  entities:
+    - switch.kaku_1
+    - light.tuinlampen_plantenbak
 
 my_covers:
   view: no
