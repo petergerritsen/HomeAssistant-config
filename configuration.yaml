@@ -30,6 +30,16 @@ homeassistant:
     light.tuinlampen_schuur:
       homebridge_visible: true
       homebridge_name: Lampen schuur
+    group.kerstlampjes:
+      homebridge_visible: true
+      homebridge_name: Kerstlampjes
+    switch.kaku_1:
+      friendly_name: Kerstlampjes Heg
+    switch.kaku_3:
+      friendly_name: Kerstboom
+      icon: mdi:pine-tree
+      homebridge_visible: true
+      homebridge_name: Kerstboom
 
 # Show links to resources in log and frontend
 #introduction:

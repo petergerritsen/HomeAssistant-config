@@ -5,6 +5,7 @@ default_view:
     - group.my_lights
     - group.my_covers
     - group.kerstlampjes
+    - switch.kaku_3
     - sensor.yr_cloudiness
     - sensor.yr_symbol
     - sensor.yr_temperature
@@ -28,7 +29,6 @@ kerstlampjes:
   view: no
   name: Kerstlampjes
   icon: mdi:pine-tree
-  control: hidden
   entities:
     - switch.kaku_1
     - light.tuinlampen_plantenbak
@@ -64,6 +64,15 @@ default_automations:
     - automation.lampen_schuur_aan_in_de_ochtend
     - automation.lampen_schuur_uit_in_de_ochtend
     
+kerstlampjes_automations:
+  view: no
+  name: Kerstlampjes automations
+  entities: 
+    - automation.kerstlampjes_aan_bij_zonsondergang
+    - automation.kerstlampjes_uit_om_2230
+    - automation.kerstlampjes_aan_in_de_ochtend
+    - automation.kerstlampjes_uit_in_de_ochtend
+    
 random_automations:
   view: no
   name: Random vacation automations
@@ -81,3 +90,4 @@ my_automations:
     - input_boolean.on_vacation
     - group.default_automations
     - group.random_automations
+    - group.kerstlampjes_automations
