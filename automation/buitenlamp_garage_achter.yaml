@@ -1,0 +1,20 @@
+- alias: Buitenlamp garage aan bij zonsondergang voor 22 uur
+  hide_entity: False
+  trigger:
+    platform: sun
+    event: sunset
+  condition:
+    condition: time
+    before: '22:00:00'
+  action:
+    service: light.turn_on
+    entity_id: light.buitenlamp_garage_achter
+
+- alias: Buitenlamp garage uit om 22:30
+  hide_entity: False
+  trigger:
+    platform: time
+    at: '22:30:00'
+  action:
+    service: light.turn_off
+    entity_id: light.buitenlamp_garage_achter
