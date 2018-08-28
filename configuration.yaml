@@ -11,32 +11,19 @@ homeassistant:
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: Europe/Amsterdam
   customize:
-    cover.zonnescherm:
+    light.buitenlamp_achter_garage:
       homebridge_visible: true
-      homebridge_cover_type: rollershutter
-      homebridge_name: Zonnescherm
-    light.buitenlamp_voordeur:
-      homebridge_visible: true
-      homebridge_name: Buitenlamp voor
+      homebridge_name: Buitenlamp achter garage
     light.lamp_zithoek:
       homebridge_visible: true
       homebridge_name: Lamp zithoek
-    light.lampen_eettafel:
-      homebridge_visible: true
-      homebridge_name: Lampen eettafel
-    light.tuinlampen_plantenbak:
-      homebridge_visible: true
-      homebridge_name: Lampen plantenbak
-    light.tuinlampen_schuur:
-      homebridge_visible: true
-      homebridge_name: Lampen schuur
     group.kerstlampjes:
       homebridge_visible: true
       homebridge_name: Kerstlampjes
     switch.kaku_1:
-      friendly_name: Kerstlampjes Heg
+      friendly_name: Kerstlampjes Heg (KaKu 1)
     switch.kaku_3:
-      friendly_name: Kerstboom
+      friendly_name: Kerstboom (KaKu 3)
       icon: mdi:pine-tree
       homebridge_visible: true
       homebridge_name: Kerstboom
@@ -105,10 +92,8 @@ light:
   devices:
     0b110000011630be07010f70:
       name: Lamp zithoek
-    0b110007011630be02010f70:
-      name: Tuinlampen plantenbak
     0b110007011630be08010f70:
-      name: Buitenlamp voordeur
+      name: Buitenlamp achter garage
 
 - platform: mqtt
   name: "Lampen eettafel"
@@ -136,6 +121,8 @@ switch:
       name: Sonoff RF
     0b110007011630be01010f70:
       name: KaKu 1
+    0b110007011630be02010f70:
+      name: KaKu 2
     0b110007011630be03010f70:
       name: KaKu 3
     0b110007011630be04010f70:
@@ -150,13 +137,6 @@ switch:
       name: KaKu A2
     0710010941030140:
       name: KaKu A3
-
-cover:
-  platform: rfxtrx
-  automatic_add: False
-  devices:
-    071a00000b561801:
-      name: Zonnescherm 
 
 camera:
   - platform: generic

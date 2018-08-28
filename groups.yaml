@@ -3,15 +3,12 @@ default_view:
   icon: mdi:home
   entities:
     - group.my_lights
-    - group.my_covers
     - group.kerstlampjes
-    - switch.kaku_3
     - sensor.yr_cloudiness
     - sensor.yr_symbol
     - sensor.yr_temperature
     - sensor.yr_wind_speed
     - sun.sun
-    - camera.voorkant
     
 my_lights:
   view: no
@@ -19,11 +16,7 @@ my_lights:
   icon: mdi:lightbulb
   control: hidden
   entities:
-    - light.buitenlamp_voordeur
-    - light.tuinlampen_schuur
-    - light.tuinlampen_plantenbak
-    - light.lampen_eettafel
-    - light.lamp_zithoek
+    - light.buitenlamp_achter_garage
     
 kerstlampjes:
   view: no
@@ -31,20 +24,14 @@ kerstlampjes:
   icon: mdi:pine-tree
   entities:
     - switch.kaku_1
-    - light.tuinlampen_plantenbak
-
-my_covers:
-  view: no
-  name: Covers
-  icon: mdi:blinds
-  entities:
-    - cover.zonnescherm
+    - switch.kaku_3
 
 kaku_sockets:
   view: yes
   name: KaKu Sockets
   entities:
     - switch.kaku_1
+    - switch.kaku_2
     - switch.kaku_3
     - switch.kaku_4
     - switch.kaku_5
@@ -57,12 +44,8 @@ default_automations:
   view: no
   name: Default automations
   entities: 
-    - automation.lampen_schuur_aan_bij_zonsondergang
-    - automation.lampen_schuur_uit_om_2230
-    - automation.buitenlamp_voordeur_aan_bij_zonsondergang
-    - automation.buitenlamp_voordeur_uit_bij_zonsopkomst
-    - automation.lampen_schuur_aan_in_de_ochtend
-    - automation.lampen_schuur_uit_in_de_ochtend
+    - automation.buitenlamp_garage_aan_bij_zonsondergang_voor_22_uur
+    - automation.buitenlamp_garage_uit_om_2230
     
 kerstlampjes_automations:
   view: no
@@ -72,22 +55,10 @@ kerstlampjes_automations:
     - automation.kerstlampjes_uit_om_2230
     - automation.kerstlampjes_aan_in_de_ochtend
     - automation.kerstlampjes_uit_in_de_ochtend
-    
-random_automations:
-  view: no
-  name: Random vacation automations
-  entities: 
-    - automation.kaku36_random_aan__uit
-    - automation.lamp_zithoek_random_aan
-    - automation.lamp_zithoek_random_uit
-    - automation.lampen_tafel_random_aan
-    - automation.lampen_tafel_random_uit
-  
+
 my_automations:
   view: yes
   name: Automations
   entities:
-    - input_boolean.on_vacation
     - group.default_automations
-    - group.random_automations
     - group.kerstlampjes_automations
