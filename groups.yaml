@@ -2,6 +2,7 @@ default_view:
   view: yes
   icon: mdi:home
   entities:
+    - group.klimaat
     - group.my_lights
     - group.kerstlampjes
     - sensor.yr_cloudiness
@@ -9,6 +10,19 @@ default_view:
     - sensor.yr_temperature
     - sensor.yr_wind_speed
     - sun.sun
+
+klimaat:
+  view: no
+  name: Klimaat
+  icon: mdi:thermometer
+  control: hidden
+  entities:
+    - sensor.garage_1_temperature
+    - sensor.garage_1_humidity
+    - sensor.kamer_job_2_temperature
+    - sensor.kamer_job_2_humidity
+    - sensor.kamer_teske_3_temperature
+    - sensor.kamer_teske_3_humidity
     
 my_lights:
   view: no
@@ -16,15 +30,18 @@ my_lights:
   icon: mdi:lightbulb
   control: hidden
   entities:
+    - light.4ch_meterkast_1
+    - light.4ch_meterkast_3
+    - light.4ch_meterkast_4
     - light.buitenlamp_achter_garage
-    
+        
 kerstlampjes:
   view: no
   name: Kerstlampjes
   icon: mdi:pine-tree
   entities:
-    - switch.kaku_1
     - switch.kaku_3
+    - light.4ch_meterkast_2
 
 kaku_sockets:
   view: yes
@@ -39,6 +56,14 @@ kaku_sockets:
     - switch.kaku_a1
     - switch.kaku_a2
     - switch.kaku_a3
+
+all_items:
+  view: yes
+  name: All items
+  entities:
+    - group.all_switches
+    - group.all_lights
+    - group.all_automations
 
 default_automations:
   view: no

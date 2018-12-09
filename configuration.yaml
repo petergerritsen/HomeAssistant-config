@@ -14,9 +14,6 @@ homeassistant:
     light.buitenlamp_achter_garage:
       homebridge_visible: true
       homebridge_name: Buitenlamp achter garage
-    light.lamp_zithoek:
-      homebridge_visible: true
-      homebridge_name: Lamp zithoek
     group.kerstlampjes:
       homebridge_visible: true
       homebridge_name: Kerstlampjes
@@ -27,6 +24,23 @@ homeassistant:
       icon: mdi:pine-tree
       homebridge_visible: true
       homebridge_name: Kerstboom
+    light.4ch_meterkast_1:
+      friendly_name: Lampen achtertuin
+      homebridge_visible: true
+      homebridge_name: Lampen achtertuin
+    light.4ch_meterkast_2:
+      friendly_name: Kerstboom achtertuin
+      icon: mdi:pine-tree
+      homebridge_visible: true
+      homebridge_name: Kerstboom achtertuin
+    light.4ch_meterkast_3:
+      friendly_name: Lampen voortuin
+      homebridge_visible: true
+      homebridge_name: Lampen voortuin
+    light.4ch_meterkast_4:
+      friendly_name: Stopcontact voortuin
+      homebridge_visible: true
+      homebridge_name: Stopcontact voortuin    
 
 # Show links to resources in log and frontend
 #introduction:
@@ -65,14 +79,6 @@ logbook:
 # Track the sun
 sun:
 
-# Weather Prediction
-sensor:
-  platform: yr
-  monitored_conditions:
-    - temperature
-    - symbol
-    - windSpeed
-    - cloudiness
 
 # Text to speech
 tts:
@@ -115,7 +121,7 @@ light:
 
 switch:
   platform: rfxtrx
-  automatic_add: False
+  automatic_add: True
   devices:        
     091300018898b2012c00:
       name: Sonoff RF
@@ -138,13 +144,39 @@ switch:
     0710010941030140:
       name: KaKu A3
 
-camera:
-  - platform: generic
-    name: Voorkant
-    still_image_url: !secret foscamc1_genericurl
-    #ip: !secret foscamc1_ip
-    #username: !secret foscamc1_username
-    #password: !secret foscamc1_password
+sensor:
+- platform: rfxtrx
+  devices:
+    0a520d000a0300d23a0179:
+      name: Kamer Teske (3)
+      data_type:
+        - Humidity
+        - Temperature
+    0a520d01d80100cf3a0179:
+      name: Garage (1)
+      data_type:
+        - Humidity
+        - Temperature
+    0a520d02520200d23a0189:
+      name: Kamer Job (2)
+      data_type:
+        - Humidity
+        - Temperature
+
+- platform: yr
+  monitored_conditions:
+    - temperature
+    - symbol
+    - windSpeed
+    - cloudiness
+
+#camera:
+#  - platform: generic
+#    name: Voorkant
+#    still_image_url: !secret foscamc1_genericurl
+#    #ip: !secret foscamc1_ip
+#    #username: !secret foscamc1_username
+#    #password: !secret foscamc1_password
       
 input_boolean:
   on_vacation:
